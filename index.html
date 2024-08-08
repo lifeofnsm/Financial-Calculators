@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P/E Ratio Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>P/E Ratio Calculator</h1>
+    </header>
+    <main>
+        <section>
+            <label for="marketValue">Market Value per Share:</label>
+            <input type="number" id="marketValue" placeholder="Enter Market Value per Share">
+            <label for="earnings">Earnings per Share:</label>
+            <input type="number" id="earnings" placeholder="Enter Earnings per Share">
+            <button onclick="calculatePE()">Calculate P/E Ratio</button>
+            <p id="peResult"></p>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
