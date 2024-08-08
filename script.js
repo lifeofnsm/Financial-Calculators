@@ -4,6 +4,7 @@ function calculatePeRatio() {
 
     if (!stockPeRatio || !industryPeRatio) {
         alert('Please enter both Stock P/E Ratio and Industry P/E Ratio.');
+        document.getElementById('peResult').textContent = ''; // Clear the result
         return;
     }
 
