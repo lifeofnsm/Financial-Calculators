@@ -1,10 +1,10 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', Arial, sans-serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: black;
-    color: gold;
+    background: linear-gradient(to bottom right, black, green, black);
+    color: white;
 }
 
 header {
@@ -26,21 +26,22 @@ section {
     border-radius: 5px;
 }
 
-label, input, button {
-    display: block;
-    margin: 0.5rem 0;
+h2 {
+    color: white;
 }
 
 label {
-    color: gold;
+    color: white;
 }
 
 input {
+    width: 100%;
     padding: 0.5rem;
-    border: 1px solid gold;
+    border: 1px solid white;
     border-radius: 3px;
     background-color: black;
-    color: gold;
+    color: white;
+    margin-bottom: 1rem;
 }
 
 button {
@@ -58,5 +59,60 @@ button:hover {
 
 p {
     font-weight: bold;
-    color: gold;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+#results {
+    margin-top: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid white;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+th {
+    background-color: green;
+    color: white;
+}
+
+td {
+    background-color: black;
+    color: white;
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.result-overvalued {
+    color: red;
+}
+
+.result-decent {
+    color: yellow;
+}
+
+.result-undervalued {
+    color: green;
+}
+
+@media (min-width: 600px) {
+    input {
+        width: auto;
+    }
+
+    button {
+        width: auto;
+    }
 }
