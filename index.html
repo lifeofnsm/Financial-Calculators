@@ -13,6 +13,15 @@
     </header>
     <main>
         <section>
+            <h2>Enter Stock Details</h2>
+            <div class="symbol-container">
+                <label for="symbol">Enter Stock Symbol:</label>
+                <input type="text" id="symbol" placeholder="Enter Stock Symbol">
+                <label for="currentPrice">Last Traded Price (LTP):</label>
+                <input type="number" id="currentPrice" placeholder="Enter Current Price">
+            </div>
+        </section>
+        <section>
             <h2>Enter Financial Metrics</h2>
             <form id="calculatorForm">
                 <div class="table-container">
@@ -34,11 +43,17 @@
                                 <td>Industry P/E Ratio</td>
                                 <td><input type="number" id="industryPeRatio" placeholder="Enter Industry P/E Ratio" required></td>
                             </tr>
+                            <tr>
+                                <td>PB Ratio</td>
+                                <td><input type="number" id="pbRatio" placeholder="Enter PB Ratio" required></td>
+                                <td id="pbResult"></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="button-container">
-                    <button type="button" onclick="calculatePeRatio()">Analyse Now</button>
+                    <button type="button" onclick="calculateMetrics()">Analyse Now</button>
+                    <button type="button" onclick="clearForm()">Clear All</button>
                 </div>
                 <div class="learn-more-container">
                     <p>Learn more about investing and trading</p>
