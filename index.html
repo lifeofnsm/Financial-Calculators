@@ -15,24 +15,35 @@
         <section>
             <h2>Enter Financial Metrics</h2>
             <form id="calculatorForm">
-                <table>
-                    <tr>
-                        <th>Params</th>
-                        <th>Value</th>
-                        <th>Result</th>
-                    </tr>
-                    <tr>
-                        <td>Stock P/E Ratio</td>
-                        <td><input type="number" id="stockPeRatio" placeholder="Enter Stock P/E Ratio" required></td>
-                        <td rowspan="2" id="peResult"></td>
-                    </tr>
-                    <tr>
-                        <td>Industry P/E Ratio</td>
-                        <td><input type="number" id="industryPeRatio" placeholder="Enter Industry P/E Ratio" required></td>
-                    </tr>
-                </table>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Params</th>
+                                <th>Value</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Stock P/E Ratio</td>
+                                <td><input type="number" id="stockPeRatio" placeholder="Enter Stock P/E Ratio" required></td>
+                                <td rowspan="2" id="peResult"></td>
+                            </tr>
+                            <tr>
+                                <td>Industry P/E Ratio</td>
+                                <td><input type="number" id="industryPeRatio" placeholder="Enter Industry P/E Ratio" required></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <div class="button-container">
                     <button type="button" onclick="calculatePeRatio()">Analyse Now</button>
+                </div>
+                <div class="learn-more-container">
+                    <p>Learn more about investing and trading</p>
+                    <a href="https://kannada.natarajmalavade.in/" target="_blank" class="learn-more-link">Courses</a>
+                    <a href="https://www.youtube.com/@natarajmalavadekannada" target="_blank" class="learn-more-link youtube-link">YouTube</a>
                 </div>
             </form>
         </section>
