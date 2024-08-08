@@ -120,10 +120,10 @@ td {
 .learn-more-link {
     color: white;
     background-color: green;
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-decoration: none;
     font-weight: bold;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 0.8rem;
     border: 1px solid green;
     border-radius: 3px;
     display: inline-block;
