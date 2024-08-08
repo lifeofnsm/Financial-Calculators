@@ -35,9 +35,14 @@
                         </thead>
                         <tbody>
                             <tr>
+                                <td>Market Cap (in Crores)</td>
+                                <td><input type="number" id="marketCap" placeholder="Enter Market Cap" onblur="updateMarketCapResult()"></td>
+                                <td id="marketCapResult" class="result"></td>
+                            </tr>
+                            <tr>
                                 <td>Stock P/E Ratio</td>
                                 <td><input type="number" id="stockPeRatio" placeholder="Enter Stock P/E Ratio" required></td>
-                                <td rowspan="2" id="peResult"></td>
+                                <td rowspan="2" id="peResult" class="result"></td>
                             </tr>
                             <tr>
                                 <td>Industry P/E Ratio</td>
@@ -45,23 +50,52 @@
                             </tr>
                             <tr>
                                 <td>PB Ratio</td>
-                                <td><input type="number" id="pbRatio" placeholder="Enter PB Ratio" required></td>
-                                <td id="pbResult"></td>
+                                <td><input type="number" id="pbRatio" placeholder="Enter PB Ratio" onblur="updatePbResult()"></td>
+                                <td id="pbResult" class="result"></td>
+                            </tr>
+                            <tr>
+                                <td>Debt to Equity Ratio</td>
+                                <td><input type="number" id="deRatio" placeholder="Enter Debt to Equity Ratio" onblur="updateDeResult()"></td>
+                                <td id="deResult" class="result"></td>
+                            </tr>
+                            <tr>
+                                <td>PEG Ratio</td>
+                                <td><input type="number" id="pegRatio" placeholder="Enter PEG Ratio" onblur="updatePegResult()"></td>
+                                <td id="pegResult" class="result"></td>
+                            </tr>
+                            <tr>
+                                <td>ROE (%)</td>
+                                <td><input type="number" id="roe" placeholder="Enter ROE" onblur="updateRoeResult()"></td>
+                                <td id="roeResult" class="result"></td>
+                            </tr>
+                            <tr>
+                                <td>ROCE (%)</td>
+                                <td><input type="number" id="roce" placeholder="Enter ROCE" onblur="updateRoceResult()"></td>
+                                <td id="roceResult" class="result"></td>
+                            </tr>
+                            <tr>
+                                <td>Net Cash Flow</td>
+                                <td><input type="number" id="netCashFlow" placeholder="Enter Net Cash Flow" onblur="updateNetCashFlowResult()"></td>
+                                <td id="netCashFlowResult" class="result"></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="button-container">
-                    <button type="button" onclick="calculateMetrics()">Analyse Now</button>
+                    <button type="button" onclick="calculateSummary()">Analyse Now</button>
                     <button type="button" onclick="clearForm()">Clear All</button>
-                </div>
-                <div class="learn-more-container">
-                    <p>Learn more about investing and trading</p>
-                    <a href="https://kannada.natarajmalavade.in/" target="_blank" class="learn-more-link">Courses</a>
-                    <a href="https://www.youtube.com/@natarajmalavadekannada" target="_blank" class="learn-more-link youtube-link">YouTube</a>
                 </div>
             </form>
         </section>
+        <section id="summarySection" class="summary-section">
+            <h2>Summary</h2>
+            <div id="summaryResult"></div>
+        </section>
+        <div class="learn-more-container">
+            <p>Learn more about investing and trading</p>
+            <a href="https://kannada.natarajmalavade.in/" target="_blank" class="learn-more-link">Courses</a>
+            <a href="https://www.youtube.com/@natarajmalavadekannada" target="_blank" class="learn-more-link youtube-link">YouTube</a>
+        </div>
     </main>
     <script src="script.js"></script>
 </body>
