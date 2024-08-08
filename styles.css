@@ -158,21 +158,71 @@ td {
     background-color: #cc0000;
 }
 
-.result-overvalued, .result-decent, .result-undervalued {
+/* Updated Result Colors */
+.result-good {
     font-weight: bold;
     font-size: 1.2em;
-}
-
-.result-overvalued {
-    color: red;
+    color: green;
 }
 
 .result-decent {
+    font-weight: bold;
+    font-size: 1.2em;
     color: yellow;
 }
 
-.result-undervalued {
+.result-bad {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: red;
+}
+
+.result-large {
+    font-weight: bold;
+    font-size: 1.2em;
     color: green;
+}
+
+.result-mid {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: yellow;
+}
+
+.result-small {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: red;
+}
+
+/* Updated Summary Section */
+.summary-section {
+    display: none;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+.summary-section.undervalued {
+    background-color: rgba(0, 128, 0, 0.2);
+    border: 2px solid green;
+}
+
+.summary-section.overvalued {
+    background-color: rgba(255, 0, 0, 0.2);
+    border: 2px solid red;
+}
+
+.summary-section.average {
+    background-color: rgba(255, 255, 0, 0.2);
+    border: 2px solid yellow;
+}
+
+.summary-section .confidence-rating,
+.summary-section .real-value,
+.summary-section .valuation {
+    font-size: 1.2em;
+    margin: 0.5rem 0;
 }
 
 @media (max-width: 600px) {
@@ -201,7 +251,7 @@ td {
         font-size: 1.2em;
     }
 
-    .result-overvalued, .result-decent, .result-undervalued {
+    .result-good, .result-decent, .result-bad, .result-large, .result-mid, .result-small {
         font-size: 1.2em;
     }
 
