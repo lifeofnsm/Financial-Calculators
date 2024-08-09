@@ -33,18 +33,18 @@ function updatePeResult() {
     if (!isNaN(stockPeRatio) && !isNaN(industryPeRatio)) {
         let text, className;
         if (stockPeRatio < industryPeRatio) {
-            text = 'Good';
+            text = 'GOOD';
             className = 'result-good';
         } else if (stockPeRatio > 2 * industryPeRatio) {
-            text = 'Overvalued';
+            text = 'BAD';
             className = 'result-bad';
         } else {
-            text = 'Decent';
+            text = 'DECENT';
             className = 'result-decent';
         }
         document.getElementById('peResult').textContent = text;
         document.getElementById('peResult').className = className;
-        document.getElementById('peResult').dataset.score = (text === 'Good' ? 3 : text === 'Decent' ? 1 : 0);
+        document.getElementById('peResult').dataset.score = (text === 'GOOD' ? 3 : text === 'DECENT' ? 1 : 0);
     }
 }
 
@@ -53,18 +53,18 @@ function updatePbResult() {
     if (!isNaN(pbRatio)) {
         let text, className;
         if (pbRatio < 2) {
-            text = 'Good';
+            text = 'GOOD';
             className = 'result-good';
         } else if (pbRatio >= 2 && pbRatio <= 5) {
-            text = 'Decent';
+            text = 'DECENT';
             className = 'result-decent';
         } else {
-            text = 'Bad';
+            text = 'BAD';
             className = 'result-bad';
         }
         document.getElementById('pbResult').textContent = text;
         document.getElementById('pbResult').className = className;
-        document.getElementById('pbResult').dataset.score = (text === 'Good' ? 3 : text === 'Decent' ? 1 : 0);
+        document.getElementById('pbResult').dataset.score = (text === 'GOOD' ? 3 : text === 'DECENT' ? 1 : 0);
     }
 }
 
@@ -73,18 +73,18 @@ function updateDeResult() {
     if (!isNaN(deRatio)) {
         let text, className;
         if (deRatio < 1) {
-            text = 'Good';
+            text = 'GOOD';
             className = 'result-good';
         } else if (deRatio >= 1 && deRatio < 2) {
-            text = 'Decent';
+            text = 'DECENT';
             className = 'result-decent';
         } else {
-            text = 'Bad';
+            text = 'BAD';
             className = 'result-bad';
         }
         document.getElementById('deResult').textContent = text;
         document.getElementById('deResult').className = className;
-        document.getElementById('deResult').dataset.score = (text === 'Good' ? 3 : text === 'Decent' ? 1 : 0);
+        document.getElementById('deResult').dataset.score = (text === 'GOOD' ? 3 : text === 'DECENT' ? 1 : 0);
     }
 }
 
@@ -93,18 +93,18 @@ function updatePegResult() {
     if (!isNaN(pegRatio)) {
         let text, className;
         if (pegRatio < 1) {
-            text = 'Good';
+            text = 'GOOD';
             className = 'result-good';
         } else if (pegRatio >= 1 && pegRatio <= 2) {
-            text = 'Decent';
+            text = 'DECENT';
             className = 'result-decent';
         } else {
-            text = 'Bad';
+            text = 'BAD';
             className = 'result-bad';
         }
         document.getElementById('pegResult').textContent = text;
         document.getElementById('pegResult').className = className;
-        document.getElementById('pegResult').dataset.score = (text === 'Good' ? 3 : text === 'Decent' ? 1 : 0);
+        document.getElementById('pegResult').dataset.score = (text === 'GOOD' ? 3 : text === 'DECENT' ? 1 : 0);
     }
 }
 
@@ -113,18 +113,18 @@ function updateRoeResult() {
     if (!isNaN(roe)) {
         let text, className;
         if (roe > 20) {
-            text = 'Good';
+            text = 'GOOD';
             className = 'result-good';
         } else if (roe >= 10 && roe <= 20) {
-            text = 'Decent';
+            text = 'DECENT';
             className = 'result-decent';
         } else {
-            text = 'Bad';
+            text = 'BAD';
             className = 'result-bad';
         }
         document.getElementById('roeResult').textContent = text;
         document.getElementById('roeResult').className = className;
-        document.getElementById('roeResult').dataset.score = (text === 'Good' ? 3 : text === 'Decent' ? 1 : 0);
+        document.getElementById('roeResult').dataset.score = (text === 'GOOD' ? 3 : text === 'DECENT' ? 1 : 0);
     }
 }
 
@@ -133,18 +133,18 @@ function updateRoceResult() {
     if (!isNaN(roce)) {
         let text, className;
         if (roce > 20) {
-            text = 'Good';
+            text = 'GOOD';
             className = 'result-good';
         } else if (roce >= 10 && roce <= 20) {
-            text = 'Decent';
+            text = 'DECENT';
             className = 'result-decent';
         } else {
-            text = 'Bad';
+            text = 'BAD';
             className = 'result-bad';
         }
         document.getElementById('roceResult').textContent = text;
         document.getElementById('roceResult').className = className;
-        document.getElementById('roceResult').dataset.score = (text === 'Good' ? 3 : text === 'Decent' ? 1 : 0);
+        document.getElementById('roceResult').dataset.score = (text === 'GOOD' ? 3 : text === 'DECENT' ? 1 : 0);
     }
 }
 
@@ -153,18 +153,18 @@ function updateNetCashFlowResult() {
     if (!isNaN(netCashFlow)) {
         let text, className;
         if (netCashFlow > 0) {
-            text = 'Good';
+            text = 'GOOD';
             className = 'result-good';
         } else if (netCashFlow === 0) {
-            text = 'Decent';
+            text = 'DECENT';
             className = 'result-decent';
         } else {
-            text = 'Bad';
+            text = 'BAD';
             className = 'result-bad';
         }
         document.getElementById('netCashFlowResult').textContent = text;
         document.getElementById('netCashFlowResult').className = className;
-        document.getElementById('netCashFlowResult').dataset.score = (text === 'Good' ? 3 : text === 'Decent' ? 1 : 0);
+        document.getElementById('netCashFlowResult').dataset.score = (text === 'GOOD' ? 3 : text === 'DECENT' ? 1 : 0);
     }
 }
 
@@ -198,14 +198,14 @@ function calculateSummary() {
 
     const pegValue = currentPrice / pegRatio;
     const realValue = pegValue * (1 + confidenceRating / 100);
-    const valuation = realValue > currentPrice ? 'UNDERVALUED' : 'OVERVALUED';
-    const timesDifference = (valuation === 'UNDERVALUED') 
+    const isPotentialForGrowth = realValue > currentPrice;
+    const timesDifference = isPotentialForGrowth 
         ? (realValue / currentPrice).toFixed(2)
         : (currentPrice / realValue).toFixed(2);
 
-    const valuationStatement = valuation === 'UNDERVALUED' 
-        ? `${stockSymbol} is an ${valuation} STOCK and the Potential Target is ${realValue.toFixed(2)}. Room for growth is ${timesDifference} times.`
-        : `${stockSymbol} is an ${valuation} STOCK because the Real Value is ${realValue.toFixed(2)}. You are paying ${timesDifference} times extra now.`;
+    const valuationStatement = isPotentialForGrowth
+        ? `${stockSymbol} has Potential for Growth (Approximately till ${realValue.toFixed(2)}). Room for growth is ${timesDifference} times.`
+        : `${stockSymbol} is Priced High. You are paying ${timesDifference} times extra now (Real Value is Approximately ${realValue.toFixed(2)}).`;
 
     document.getElementById('summaryResult').innerHTML = `
         <p class="confidence-rating">Confidence Rating: ${confidenceRating.toFixed(2)} / 100</p>
@@ -213,27 +213,23 @@ function calculateSummary() {
     `;
 
     const summarySection = document.getElementById('summarySection');
-    summarySection.className = `summary-section ${valuation.toLowerCase()}`;
+    summarySection.className = `summary-section ${isPotentialForGrowth ? 'undervalued' : 'overvalued'}`;
     summarySection.style.display = 'block';
 }
 
-function clearForm() {
-    // Reset the form fields
-    document.getElementById('calculatorForm').reset();
 
-    // Clear all results and reset class names
+function clearForm() {
+    document.getElementById('calculatorForm').reset();
     document.querySelectorAll('.result').forEach(result => {
         result.textContent = '';
         result.className = 'result';
         delete result.dataset.score;
     });
-
-    // Clear the summary section
     document.getElementById('summaryResult').innerHTML = '';
     document.getElementById('summarySection').style.display = 'none';
     document.getElementById('summarySection').className = 'summary-section';
-
-    // Clear specific input fields for stock symbol and current price
+    
+    // Clear Stock Symbol and Last Traded Price input fields
     document.getElementById('symbol').value = '';
     document.getElementById('currentPrice').value = '';
 
