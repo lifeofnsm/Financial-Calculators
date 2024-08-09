@@ -187,22 +187,29 @@ function calculateSummary() {
     const totalScore = scores.reduce((sum, score) => sum + score, 0);
     const confidenceRating = (totalScore / (scores.length * 3)) * 100;
 
+    const stockSymbol = document.getElementById('symbol').value.trim().toUpperCase();
     const currentPrice = parseFloat(document.getElementById('currentPrice').value);
     const pegRatio = parseFloat(document.getElementById('pegRatio').value);
 
     if (isNaN(currentPrice) || isNaN(pegRatio)) {
-        alert('Please enter the current price and PEG ratio to calculate the real value.');
+        alert('Please enter all the required details to calculate the summary.');
         return;
     }
 
     const pegValue = currentPrice / pegRatio;
     const realValue = pegValue * (1 + confidenceRating / 100);
-    const valuation = realValue > currentPrice ? 'Undervalued' : realValue < currentPrice ? 'Overvalued' : 'Average';
+    const valuation = realValue > currentPrice ? 'UNDERVALUED' : 'OVERVALUED';
+    const timesDifference = (valuation === 'UNDERVALUED') 
+        ? (realValue / currentPrice).toFixed(2)
+        : (currentPrice / realValue).toFixed(2);
+
+    const valuationStatement = valuation === 'UNDERVALUED' 
+        ? `${stockSymbol} is an ${valuation} STOCK and the Potential Target is ${realValue.toFixed(2)}. Room for growth is ${timesDifference} times.`
+        : `${stockSymbol} is an ${valuation} STOCK because the Real Value is ${realValue.toFixed(2)}. You are paying ${timesDifference} times extra now.`;
 
     document.getElementById('summaryResult').innerHTML = `
         <p class="confidence-rating">Confidence Rating: ${confidenceRating.toFixed(2)} / 100</p>
-        <p class="real-value">Real Value: ${realValue.toFixed(2)}</p>
-        <p class="valuation ${valuation.toLowerCase()}">${valuation}</p>
+        <p class="valuation">${valuationStatement}</p>
     `;
 
     const summarySection = document.getElementById('summarySection');
@@ -210,19 +217,23 @@ function calculateSummary() {
     summarySection.style.display = 'block';
 }
 
-
 function clearForm() {
+    // Reset the form fields
     document.getElementById('calculatorForm').reset();
+
+    // Clear all results and reset class names
     document.querySelectorAll('.result').forEach(result => {
         result.textContent = '';
         result.className = 'result';
         delete result.dataset.score;
     });
+
+    // Clear the summary section
     document.getElementById('summaryResult').innerHTML = '';
     document.getElementById('summarySection').style.display = 'none';
     document.getElementById('summarySection').className = 'summary-section';
-    
-    // Clear Stock Symbol and Last Traded Price input fields
+
+    // Clear specific input fields for stock symbol and current price
     document.getElementById('symbol').value = '';
     document.getElementById('currentPrice').value = '';
 
@@ -239,7 +250,6 @@ function clearForm() {
         }
     });
 }
-
 
 document.getElementById('stockPeRatio').addEventListener('blur', updatePeResult);
 document.getElementById('industryPeRatio').addEventListener('blur', updatePeResult);
