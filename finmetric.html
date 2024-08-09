@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Metrics Calculator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Financial Metrics Calculator</h1>
+        <p style="font-size: small; font-style: italic;">by Nataraj Malavade</p>
+    </header>
+    <main>
+        <section>
+            <h2>Enter Stock Details</h2>
+            <div class="symbol-container">
+                <label for="symbol">Enter Stock Symbol:</label>
+                <input type="text" id="symbol" placeholder="Enter Stock Symbol">
+                <label for="currentPrice">Last Traded Price (LTP):</label>
+                <input type="number" id="currentPrice" placeholder="Enter Current Price">
+            </div>
+        </section>
+        <section>
+            <h2>Enter Financial Metrics</h2>
+            <form id="calculatorForm">
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Params</th>
+                                <th>Value</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Market Cap (in Crores)</td>
+                                <td><input type="number" id="marketCap" placeholder="Enter Market Cap" onblur="updateMarketCapResult()"></td>
+                                <td id="marketCapResult" class="result"></td>
+                            </tr>
+                            <tr>
+                                <td>Stock P/E Ratio</td>
+                                <td><input type="number" id="stockPeRatio" placeholder="Enter Stock P/E Ratio" required></td>
+                                <td rowspan="2" id="peResult" class="result"></td>
+                            </tr>
+                            <tr>
+                                <td>Industry P/E Ratio</td>
+                                <td><input type="number" id="industryPeRatio" placeholder="Enter Industry P/E Ratio" required></td>
+                            </tr>
+                            <tr>
+                                <td>PB Ratio</td>
+                                <td><input type="number" id="pbRatio" placeholder="Enter PB Ratio" onblur="updatePbResult()"></td>
+                                <td id="pbResult" class="result"></td>
+                            </tr>
+                            <tr>
+                                <td>Debt to Equity Ratio</td>
+                                <td><input type="number" id="deRatio" placeholder="Enter Debt to Equity Ratio" onblur="updateDeResult()"></td>
+                                <td id="deResult" class="result"></td>
+                            </tr>
+                            <tr>
+                                <td>PEG Ratio</td>
+                                <td><input type="number" id="pegRatio" placeholder="Enter PEG Ratio" onblur="updatePegResult()"></td>
+                                <td id="pegResult" class="result"></td>
+                            </tr>
+                            <tr>
+                                <td>ROE (%)</td>
+                                <td><input type="number" id="roe" placeholder="Enter ROE" onblur="updateRoeResult()"></td>
+                                <td id="roeResult" class="result"></td>
+                            </tr>
+                            <tr>
+                                <td>ROCE (%)</td>
+                                <td><input type="number" id="roce" placeholder="Enter ROCE" onblur="updateRoceResult()"></td>
+                                <td id="roceResult" class="result"></td>
+                            </tr>
+                            <tr>
+                                <td>Net Cash Flow</td>
+                                <td><input type="number" id="netCashFlow" placeholder="Enter Net Cash Flow" onblur="updateNetCashFlowResult()"></td>
+                                <td id="netCashFlowResult" class="result"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="button-container">
+                    <button type="button" onclick="calculateSummary()">Analyse Now</button>
+                    <button type="button" onclick="clearForm()">Clear All</button>
+                </div>
+            </form>
+        </section>
+        <section id="summarySection" class="summary-section">
+            <h2>Summary</h2>
+            <div id="summaryResult"></div>
+        </section>
+        <div class="learn-more-container">
+            <p>Learn more about investing and trading</p>
+            <a href="https://kannada.natarajmalavade.in/" target="_blank" class="learn-more-link">Courses</a>
+            <a href="https://www.youtube.com/@natarajmalavadekannada" target="_blank" class="learn-more-link youtube-link">YouTube</a>
+        </div>
+    </main>
+    <footer>
+        <p style="font-size: small; font-style: italic;">Disclaimer: The information provided by this calculator is for educational purposes only and should not be construed as financial advice. Please consult with a financial advisor before making any investment decisions.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
