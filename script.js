@@ -204,18 +204,24 @@ function calculateSummary() {
         : (currentPrice / realValue).toFixed(2);
 
     const valuationStatement = isPotentialForGrowth
-        ? `${stockSymbol} has Potential for Growth (Approximately till ${realValue.toFixed(2)}). Room for growth is ${timesDifference} times.`
-        : `${stockSymbol} is Priced High. You are paying ${timesDifference} times extra now (Real Value is Approximately ${realValue.toFixed(2)}).`;
+        ? `${stockSymbol} has Potential for Growth (Approximately till ₹${realValue.toFixed(2)}). Room for growth is ${timesDifference} times.`
+        : `${stockSymbol} is Priced High. You are paying ${timesDifference} times extra now (Real Value is Approximately ₹${realValue.toFixed(2)}).`;
+
+    const kannadaValuationStatement = isPotentialForGrowth
+        ? `${stockSymbol} ಶೇರ್ ಬೆಳವಣಿಗೆ ಆಗೋ ಸಾಮರ್ಥ್ಯವನ್ನು ಹೊಂದಿದೆ. ಇದರ ಅಂದಾಜು ಮೌಲ್ಯ ₹${realValue.toFixed(2)}. ಸದ್ದ್ಯದ ಬೆಲೆಯಿಂದ ${timesDifference} ಪಟ್ಟು ಬೆಳೆಯೋ ಚಾನ್ಸ್ ಇದೆ.`
+        : `${stockSymbol} ಶೇರ್ ಸದ್ದ್ಯದ ಬೆಲೆ ದುಬಾರಿಯಾಗಿ ಟ್ರೇಡ್ ಆಗ್ತಿದೆ! ಇದರ ಅಂದಾಜು ಮೌಲ್ಯ ₹${realValue.toFixed(2)}. ಈಗಿನ ಬೆಲೆಯ ಪ್ರಕಾರ ನೀವು ${timesDifference} ಪಟ್ಟು ಹೆಚ್ಚು ಬೆಲೆ ಕೊಟ್ಟ ಹಾಗೆ ಲೆಕ್ಕ!`;
 
     document.getElementById('summaryResult').innerHTML = `
         <p class="confidence-rating">Confidence Rating: ${confidenceRating.toFixed(2)} / 100</p>
         <p class="valuation">${valuationStatement}</p>
+        <p class="valuation">${kannadaValuationStatement}</p>
     `;
 
     const summarySection = document.getElementById('summarySection');
     summarySection.className = `summary-section ${isPotentialForGrowth ? 'undervalued' : 'overvalued'}`;
     summarySection.style.display = 'block';
 }
+
 
 
 function clearForm() {
