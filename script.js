@@ -24,6 +24,7 @@ function updateMarketCapResult() {
         }
         document.getElementById('marketCapResult').textContent = text;
         document.getElementById('marketCapResult').className = className;
+        document.getElementById('marketCapResult').dataset.score = (text === 'LARGE' ? 3 : text === 'MID' ? 2 : 1);
     }
 }
 
@@ -169,60 +170,58 @@ function updateNetCashFlowResult() {
 }
 
 function calculateSummary() {
-    const scores = [
-        document.getElementById('peResult').dataset.score,
-        document.getElementById('pbResult').dataset.score,
-        document.getElementById('deResult').dataset.score,
-        document.getElementById('pegResult').dataset.score,
-        document.getElementById('roeResult').dataset.score,
-        document.getElementById('roceResult').dataset.score,
-        document.getElementById('netCashFlowResult').dataset.score
-    ].map(Number);
+    const scoreElements = [
+        'peResult',
+        'pbResult',
+        'deResult',
+        'pegResult',
+        'roeResult',
+        'roceResult',
+        'netCashFlowResult',
+        'marketCapResult'
+    ];
 
-    if (scores.includes(NaN) || scores.includes(undefined)) {
+    const scores = scoreElements.map(id => {
+        const element = document.getElementById(id);
+        return element && element.dataset.score ? parseInt(element.dataset.score) : NaN;
+    });
+
+    if (scores.includes(NaN)) {
         alert('Please enter all the required metrics to calculate the summary.');
         return;
     }
 
     const totalScore = scores.reduce((sum, score) => sum + score, 0);
     const confidenceRating = (totalScore / (scores.length * 3)) * 100;
-
     const stockSymbol = document.getElementById('symbol').value.trim().toUpperCase();
-    const currentPrice = parseFloat(document.getElementById('currentPrice').value);
-    const pegRatio = parseFloat(document.getElementById('pegRatio').value);
+    const marketCapText = document.getElementById('marketCapResult').textContent;
+    let briefSummary;
 
-    if (isNaN(currentPrice) || isNaN(pegRatio)) {
-        alert('Please enter all the required details to calculate the summary.');
-        return;
+    if (confidenceRating >= 70) {
+        briefSummary = `${stockSymbol} is looking strong with a ${confidenceRating.toFixed(2)}% confidence rating. A promising investment with a good balance across key metrics.`;
+    } else if (confidenceRating >= 50) {
+        briefSummary = `${stockSymbol} is showing moderate potential with a ${confidenceRating.toFixed(2)}% confidence rating. Growth is possible, but a cautious approach is advisable.`;
+    } else {
+        briefSummary = `${stockSymbol} is considered a risky investment with a ${confidenceRating.toFixed(2)}% confidence rating. It's important to be careful before proceeding.`;
     }
 
-    const pegValue = currentPrice / pegRatio;
-    const realValue = pegValue * (1 + confidenceRating / 100);
-    const isPotentialForGrowth = realValue > currentPrice;
-    const timesDifference = isPotentialForGrowth 
-        ? (realValue / currentPrice).toFixed(2)
-        : (currentPrice / realValue).toFixed(2);
-
-    const valuationStatement = isPotentialForGrowth
-        ? `${stockSymbol} has Potential for Growth (Approximately till ₹${realValue.toFixed(2)}). Room for growth is ${timesDifference} times.`
-        : `${stockSymbol} is Priced High. You are paying ${timesDifference} times extra now (Real Value is Approximately ₹${realValue.toFixed(2)}).`;
-
-    const kannadaValuationStatement = isPotentialForGrowth
-        ? `${stockSymbol} ಶೇರ್ ಬೆಳವಣಿಗೆ ಆಗೋ ಸಾಮರ್ಥ್ಯವನ್ನು ಹೊಂದಿದೆ. ಇದರ ಅಂದಾಜು ಮೌಲ್ಯ ₹${realValue.toFixed(2)}. ಸದ್ದ್ಯದ ಬೆಲೆಯಿಂದ ${timesDifference} ಪಟ್ಟು ಬೆಳೆಯೋ ಚಾನ್ಸ್ ಇದೆ.`
-        : `${stockSymbol} ಶೇರ್ ಸದ್ದ್ಯದ ಬೆಲೆ ದುಬಾರಿಯಾಗಿ ಟ್ರೇಡ್ ಆಗ್ತಿದೆ! ಇದರ ಅಂದಾಜು ಮೌಲ್ಯ ₹${realValue.toFixed(2)}. ಈಗಿನ ಬೆಲೆಯ ಪ್ರಕಾರ ನೀವು ${timesDifference} ಪಟ್ಟು ಹೆಚ್ಚು ಬೆಲೆ ಕೊಟ್ಟ ಹಾಗೆ ಲೆಕ್ಕ!`;
+    const kannadaSummary = confidenceRating >= 70
+        ? `${stockSymbol} ಒಂದು ${marketCapText}-ಕ್ಯಾಪ್ ಕಂಪನಿ ಆಗಿದೆ. Analysis ಪ್ರಕಾರ, ಈ stock strong ಕಾಣ್ತಾ ಇದೆ ${confidenceRating.toFixed(2)}% confidence rating. ಇದು ಒಳ್ಳೆ ಇನ್ವೆಸ್ಟ್ಮೆಂಟ್ ಆಗೋ ಚಾನ್ಸ್ ಇದೆ.`
+        : confidenceRating >= 50
+            ? `${stockSymbol} ಒಂದು ${marketCapText}-ಕ್ಯಾಪ್ ಕಂಪನಿ ಆಗಿದೆ. Analysis ಪ್ರಕಾರ, ಈ stock moderate potential ತೋರಿಸುತ್ತಿದೆ ${confidenceRating.toFixed(2)}% confidence rating. Growth ಆಗೋ ಚಾನ್ಸ್ ಇದೆ, ಆದ್ರೆ ಸ್ವಲ್ಪ careful ಆಗಿರೋದು ಬೆಸ್ಟ್.`
+            : `${stockSymbol} ಒಂದು ${marketCapText}-ಕ್ಯಾಪ್ ಕಂಪನಿ ಆಗಿದೆ. Analysis ಪ್ರಕಾರ, ಈ stock risky ಇನ್ವೆಸ್ಟ್ಮೆಂಟ್ ಅಲ್ಲಿ ಬರುತ್ತೆ ${confidenceRating.toFixed(2)}% confidence rating. So ಇನ್ವೆಸ್ಟ್  ಮಾಡೋ ಮುನ್ನ ಸ್ವಲ್ಪ ಹುಷಾರಾಗಿರಿ.`;
 
     document.getElementById('summaryResult').innerHTML = `
-        <p class="confidence-rating">Confidence Rating: ${confidenceRating.toFixed(2)} / 100</p>
-        <p class="valuation">${valuationStatement}</p>
-        <p class="valuation">${kannadaValuationStatement}</p>
+        <h3>English Summary</h3>
+        <p class="confidence-rating">${briefSummary}</p>
+        <h3>Kannada Summary</h3>
+        <p class="valuation">${kannadaSummary}</p>
     `;
 
     const summarySection = document.getElementById('summarySection');
-    summarySection.className = `summary-section ${isPotentialForGrowth ? 'undervalued' : 'overvalued'}`;
+    summarySection.className = 'summary-section';
     summarySection.style.display = 'block';
 }
-
-
 
 function clearForm() {
     document.getElementById('calculatorForm').reset();
@@ -261,4 +260,5 @@ document.getElementById('pegRatio').addEventListener('blur', updatePegResult);
 document.getElementById('roe').addEventListener('blur', updateRoeResult);
 document.getElementById('roce').addEventListener('blur', updateRoceResult);
 document.getElementById('netCashFlow').addEventListener('blur', updateNetCashFlowResult);
+document.getElementById('marketCap').addEventListener('blur', updateMarketCapResult);
 document.getElementById('currentPrice').addEventListener('blur', calculateSummary);
